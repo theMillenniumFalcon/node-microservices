@@ -1,8 +1,19 @@
+const semver = require('semver')
+
 class ServiceRegistry {
     constructor(log) {
         this.log = log;
-        this.service = {}
+        this.services = {}
         this.timeout = 30
+    }
+
+    get(name, version) {
+        this.cleanup()
+        const serviceList = Object.values(this.services)
+            .filter(service => service.name === name &&
+                semver.satisfies(service.version, version))
+
+        return serviceList[Math.floor(Math.random() * serviceList.length)]
     }
 
     register(name, version, ip, port) {
@@ -22,6 +33,14 @@ class ServiceRegistry {
 
         this.services[key].timestamp = Math.floor(new Date() / 1000)
         this.log.debug(`Updated services ${name}, version ${version} at ${ip}:${port}`)
+
+        return key
+    }
+
+    unregister(name, version, ip, port) {
+        const key = name + version + ip + port
+        delete this.services[key]
+        this.log.debug(`Unregistered services ${name}, version ${version} at ${ip}:${port}`)
         return key
     }
 
