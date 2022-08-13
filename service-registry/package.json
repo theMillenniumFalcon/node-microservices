@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A generic service registry for Node.js",
   "scripts": {
-    "start": "nodemon bin/run | bunyan"
+    "dev": "nodemon bin/run | bunyan"
   },
   "keywords": [],
   "author": "",
