@@ -2,7 +2,6 @@
   "name": "users-service",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "",
   "scripts": {
     "build": "webpack --progress",
     "deploy": "node-deploy $(pwd)",

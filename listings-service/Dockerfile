@@ -4,6 +4,6 @@ COPY . /opt/app
 
 WORKDIR /opt/app/listings-service
 
-RUN yarn
+RUN npm i
 
-CMD yarn watch
+CMD npm run watch
