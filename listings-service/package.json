@@ -1,0 +1,27 @@
+{
+  "name": "listings-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --progress",
+    "deploy": "node-deploy $(pwd)",
+    "db:migrate": "sequelize db:migrate",
+    "db:migrate:undo": "sequelize db:migrate:undo",
+    "linkall": "yarn link node-deploy",
+    "watch": "babel-watch -L src/index.js"
+  },
+  "devDependencies": {
+    "babel-watch": "^7.7.0",
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.19.3",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.23.2",
+    "sequelize-cli": "^6.5.1"
+  }
+}
