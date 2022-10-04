@@ -1,3 +1,5 @@
+// import ListingsService from "../../../adapters/ListingsService"
+
 const listingsResolver = async () => {
     return [
         {
