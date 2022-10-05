@@ -6,10 +6,12 @@ import express from "express"
 import { resolvers } from "../graphql/resolvers"
 import typeDefs from "../graphql/typeDefs"
 import { accessEnv } from '../helpers/accessEnv'
+import { formatGraphQLErrors } from "./formatGraphQLErrors"
 
 const PORT = accessEnv("PORT", 7000)
 
 const apolloServer = new ApolloServer({
+    formatError: formatGraphQLErrors,
     resolvers,
     typeDefs
 })
