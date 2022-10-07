@@ -56,4 +56,16 @@ export const setupRoutes = app => {
             return next(error)
         }
     })
+
+    app.get("/users/:userId", async (req, res, next) => {
+        try {
+            const user = await User.findByPk(req.params.userId)
+
+            if (!user) return next(new Error("Invalid user ID"))
+
+            return res.json(user)
+        } catch (e) {
+            return next(e)
+        }
+    })
 }

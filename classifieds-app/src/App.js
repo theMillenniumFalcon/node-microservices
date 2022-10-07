@@ -1,4 +1,4 @@
-import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider } from '@apollo/client';
 
 import { Root } from './components/Root';
 import { createGlobalStyle, ThemeProvider } from "styled-components";

@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useForm } from "react-hook-form";
+import { useMutation } from '@apollo/client';
 
 import { TextInput } from '../shared/TextInput';
+import { LOGIN_MUTATION } from '../../graphql/mutations/Login';
 
 const Label = styled.label`
   display: block;
@@ -29,12 +31,11 @@ const OrSignUp = styled.span`
 export const Login = () => {
     const { formState: { isSubmitting }, handleSubmit, register } = useForm()
 
+    const [loginFunction] = useMutation(LOGIN_MUTATION)
+
     const onSubmit = handleSubmit(async ({ email, password }) => {
-        // const {
-        //     data: { createUserSession: createdSession }
-        // } = await createUserSession({ variables: { email, password } })
-        // dispatch(setSession(createdSession))
-        console.log(email, password)
+        const result = await loginFunction({ variables: { email, password } })
+        console.log(result)
     })
 
     return (
