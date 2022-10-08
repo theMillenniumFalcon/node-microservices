@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { gql } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 
 import { AccountDetails } from '../AccountDetails';
 import { client } from '../../api/graphqlClient';
 import { setSession } from '../../actions/session';
+import { USERSESSION_QUERY } from '../../graphql/queries/UserSession'
 
 const Wrapper = styled.div`
   box-sizing: border-box;
@@ -31,24 +31,12 @@ const Sidebar = styled.div`
   width: 10rem;
 `;
 
-const query = gql`
-  {
-    userSession(me: true) {
-      id
-      user {
-        email
-        id
-      }
-    }
-  }
-`;
-
 export const Landing = () => {
   const dispatch = useDispatch()
   const [initialised, setInitialised] = useState(false)
 
   useEffect(() => {
-    client.query({ query }).then(({ data }) => {
+    client.query({ USERSESSION_QUERY }).then(({ data }) => {
       if (data.userSession) {
         dispatch(setSession(data.userSession))
       }

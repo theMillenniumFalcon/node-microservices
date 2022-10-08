@@ -1,9 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
+import { useMutation } from '@apollo/client';
 
 import { clearSession } from '../../actions/session';
+import { DELETE_USERSESSION_MUTATION } from '../../graphql/mutations/DeleteUserSession';
 
 const Email = styled.div`
   color: ${props => props.theme.nero};
@@ -23,21 +24,23 @@ const Wrapper = styled.div`
 `;
 
 export const Account = () => {
-    const dispatch = useDispatch()
-    const session = useSelector(state => state.session)
+  const [deleteUserSession] = useMutation(DELETE_USERSESSION_MUTATION)
+  const dispatch = useDispatch()
+  const session = useSelector(state => state.session)
 
-    return (
-        <Wrapper>
-            Logged in as
-            <Email>{session.user.email}</Email>
-            <LogoutLink
-                onClick={e => {
-                    e.preventDefault()
-                    dispatch(clearSession())
-                }}
-            >
-                (Logout)
-            </LogoutLink>
-        </Wrapper>
-    )
+  return (
+    <Wrapper>
+      Logged in as
+      <Email>{session.user.email}</Email>
+      <LogoutLink
+        onClick={e => {
+          e.preventDefault()
+          dispatch(clearSession())
+          deleteUserSession({ variables: { sessionId: session.id } })
+        }}
+      >
+        (Logout)
+      </LogoutLink>
+    </Wrapper>
+  )
 }
