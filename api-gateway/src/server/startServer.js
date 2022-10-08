@@ -7,6 +7,7 @@ import { resolvers } from "../graphql/resolvers"
 import typeDefs from "../graphql/typeDefs"
 import { accessEnv } from '../helpers/accessEnv'
 import { formatGraphQLErrors } from "./formatGraphQLErrors"
+import { injectSession } from './injectSession'
 
 const PORT = accessEnv("PORT", 7000)
 
@@ -27,6 +28,8 @@ app.use(
         credentials: true
     })
 )
+
+app.use(injectSession)
 
 apolloServer.start()
 
