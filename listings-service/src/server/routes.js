@@ -5,8 +5,8 @@ export const setupRoutes = app => {
         try {
             const listings = await Listing.findAll()
             return res.json(listings)
-        } catch (e) {
-            return next(e)
+        } catch (error) {
+            return next(error)
         }
     })
 
@@ -18,8 +18,8 @@ export const setupRoutes = app => {
         try {
             const listing = await Listing.create({ description: req.body.description, title: req.body.title })
             return res.json(listing)
-        } catch (e) {
-            return next(e)
+        } catch (error) {
+            return next(error)
         }
     })
 }

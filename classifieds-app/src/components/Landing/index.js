@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux';
 import { AccountDetails } from '../AccountDetails';
 import { client } from '../../api/graphqlClient';
 import { setSession } from '../../actions/session';
-import { USERSESSION_QUERY } from '../../graphql/queries/UserSession'
+import { USERSESSION_QUERY } from '../../graphql/queries/userSession';
+import { Listings } from '../Listings';
 
 const Wrapper = styled.div`
   box-sizing: border-box;
@@ -52,7 +53,7 @@ export const Landing = () => {
     <Wrapper>
       <Container>
         <Content>
-          Hello
+          <Listings />
         </Content>
         <Sidebar>
           <AccountDetails />

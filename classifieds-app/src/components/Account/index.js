@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useMutation } from '@apollo/client';
 
 import { clearSession } from '../../actions/session';
-import { DELETE_USERSESSION_MUTATION } from '../../graphql/mutations/DeleteUserSession';
+import { DELETE_USERSESSION_MUTATION } from '../../graphql/mutations/deleteUserSession';
 
 const Email = styled.div`
   color: ${props => props.theme.nero};

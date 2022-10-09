@@ -5,7 +5,7 @@ import { useMutation } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 
 import { TextInput } from '../shared/TextInput';
-import { LOGIN_MUTATION } from '../../graphql/mutations/Login';
+import { LOGIN_MUTATION } from '../../graphql/mutations/login';
 import { setSession } from '../../actions/session';
 
 const Label = styled.label`

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useMutation } from '@apollo/client';
 
 import { TextInput } from '../shared/TextInput';
-import { SIGNUP_MUTATION } from '../../graphql/mutations/SignUp';
+import { SIGNUP_MUTATION } from '../../graphql/mutations/signUp';
 import { validationSchema } from '../../utils/validationSchema';
 
 const Label = styled.label`

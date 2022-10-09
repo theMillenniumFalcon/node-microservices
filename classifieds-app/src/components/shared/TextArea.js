@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Textarea = styled.textarea`
+export const TextArea = styled.textarea`
   border: 1px solid ${props => props.theme.veryLightGrey};
   box-sizing: border-box;
   display: block;
